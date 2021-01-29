@@ -14,7 +14,7 @@ namespace BojanZelenkovic.Models
         [StringLength(50,ErrorMessage ="Tekstualna vrednost sa najvise 50 karaktera!")]
         public string Ime { get; set; }
 
-        [Range(2010,2020,ErrorMessage ="Celobrojna vrednost iz intervala [2010,2020]")]
+        [Range(2010,2019,ErrorMessage ="Celobrojna vrednost iz intervala [2010,2020)")]
         public int GodinaOsnivanja { get; set; }
 
         public ICollection<Zaposleni> Zaposleni { get; set; }

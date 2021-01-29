@@ -23,7 +23,7 @@
 
 
     $("body").on("click", "#odjavise", odjava); 
-    $("body").on("click", "#obrisiZaposleni", obrisiZaposleni); btnLista
+    $("body").on("click", "#obrisiZaposleni", obrisiZaposleni); 
     //---------------------
     $("#btnZaposleni").click(function () {
         var reqUrlZaposleni = "http://" + host + zaposleniEndPoint;
@@ -329,11 +329,11 @@
             var table;
 
             if (token) {
-                table = $("<table border='1'><tr style='background-color:yellow;'><th>Ime i prezime</th><th>Rola</th><th>Godina zaposlenja</th><th>Godina rodjenja</th><th>Jedinica</th><th>Plata</th></tr></table>");
+                table = $("<table class='zaposleniTabela'><tr style='text-align:center'><th>Ime i prezime</th><th>Rola</th><th>Godina zaposlenja</th><th>Godina rodjenja</th><th>Jedinica</th><th>Plata</th><th></th></tr></table>");
             }
             else {
 
-                table = $("<table border='1'><tr style='background-color:yellow;'><th>Ime i prezime</th><th>Rola</th><th>Godina zaposlenja</th><th>Jedinica</th></tr></table>");
+                table = $("<table class='zaposleniTabela'><tr><th style='text-align:center'>Ime i prezime</th><th>Rola</th><th>Godina zaposlenja</th><th>Jedinica</th></tr></table>");
 
             }
 
@@ -341,7 +341,7 @@
                 var row;
                 var stringId = data[i].Id.toString();
                 if (token) {
-                    row = $("<tr><td>" + data[i].ImeIPrezime + "</td><td>" + data[i].Rola + "</td><td>" + data[i].GodinaZaposlenja + "</td><td>" + data[i].GodinaRodjenja + "</td><td>" + data[i].OrganizacionaJedinica.Ime + "</td><td>" + data[i].Plata + "</td><td><button  class='btn btn - link' id='obrisiZaposleni' name=" + stringId + ">Brisanje</button></tr>");
+                    row = $("<tr><td>" + data[i].ImeIPrezime + "</td><td>" + data[i].Rola + "</td><td>" + data[i].GodinaZaposlenja + "</td><td>" + data[i].GodinaRodjenja + "</td><td>" + data[i].OrganizacionaJedinica.Ime + "</td><td>" + data[i].Plata + "</td><td><button  class='btn' id='obrisiZaposleni' name=" + stringId + ">Brisanje</button></tr>");
                 }
                 else {
                     row = $("<tr><td>" + data[i].ImeIPrezime + "</td><td>" + data[i].Rola + "</td><td>" + data[i].GodinaZaposlenja + "</td><td>" + data[i].OrganizacionaJedinica.Ime + "</td></tr>");

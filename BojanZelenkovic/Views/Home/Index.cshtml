@@ -9,8 +9,10 @@
     </div>
     <div id="regPrijava">
         <h2 style="text-align:center">Korisnik nije prijavljen na sistem</h2>
-        <button style='background-color:yellow' class='btn btn -default' id='btnRegistracija'>Registracija</button>
-        <button class='btn btn -default' id='btnPrijavise'>Prijava</button>
+        <div class="intro">
+            <button style='background-color:yellow' class='btn' id='btnRegistracija'>Registracija</button>
+            <button class='btn' id='btnPrijavise'>Prijava</button>
+        </div>
     </div>
 
 </div>
@@ -27,8 +29,8 @@
                 <input class="form-control" type="password" id="regLoz" />
             </div>
             <div class="form-group">
-                <button type="button" id="btnOdustajanje" class="btn btn-default">Odustajanje</button>
-                <button style="background-color:yellow" type="submit" class="btn btn-default">Registracija</button>
+                <button type="button" id="btnOdustajanje" class="btn">Odustajanje</button>
+                <button id="btnRegistracija2" type="submit" class="btn">Registracija</button>
             </div>
         </form>
     </div>
@@ -44,28 +46,29 @@
                 <input class="form-control" type="password" id="priLoz" />
             </div>
             <div class="form-group">
-                <button  style="background-color:yellow"  type="submit" id="btnPrijava" class="btn btn-default">Prijava</button>
-                <button type="button" id="btnOdustajanje1" class="btn btn-default">Odustajanje</button>
+                <button type="button" id="btnOdustajanje1" class="btn">Odustajanje</button>
+                <button style="background-color:yellow" type="submit" id="btnPrijava" class="btn">Prijava</button>
+
             </div>
         </form>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-4 col-md-offset-4" id="divPretraga">
+    <div class="col-md-6 col-md-offset-4" id="divPretraga">
         <div>
             <form method="post" action="post/" id="pretragaForma">
                 <h3 id="formHeader">Pretraga zaposlenih po plati</h3>
                 <div class="form-group">
-                    <label>Najmanje : </label>
+                    <label>Najmanja plata </label>
                     <input class="form-control" type="number" id="start" />
                 </div>
                 <div class="form-group">
-                    <label>Najvise: </label>
+                    <label>Najvisa plata </label>
                     <input class="form-control" type="number" id="kraj" />
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-default">Trazi</button>
+                    <button type="submit" class="btn" id="btnPretraga">Pretrazi</button>
                 </div>
             </form>
         </div>
@@ -74,14 +77,14 @@
 <div class="row">
     <button id="btnZaposleni" style="display:none"></button>
     <div id="sadrzaj">
-        <h2>Zaposleni</h2>
+        <h2 class="naslov">Zaposleni</h2>
         <div id="zaposleniData"></div>
     </div>
 </div>
 <div class="row">
     <div class="col-md-4 col-md-offset-4" id='divForma'>
         <form method="post" action="post/" id="zaposleniForma">
-            <h2 id="formHeader">Dodavanje novog Zaposlenog</h2>
+            <h2 id="formHeader">Dodavanje novog zaposlenog</h2>
             <label>Organizaciona jedinica</label><br />
             <div class="form-group" id="divBefore">
                 <label>Rola</label>
@@ -104,9 +107,8 @@
                 <input class="form-control" type="number" id="zaposleniplata" />
             </div>
             <div class="form-group">
-                <button  style="background-color:yellow"  id="btnSubmit" type="submit" class="btn btn-default">Dodavanje</button>
                 <button type="button" id="btnOdustajanje2" class="btn btn-dark">Odustajanje</button>
-
+                <button style="background-color:yellow" id="btnSubmit" type="submit" class="btn btn-default">Dodaj</button>
             </div>
         </form>
     </div>
