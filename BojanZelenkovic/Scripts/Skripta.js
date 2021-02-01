@@ -18,13 +18,17 @@
     // pocetno stanje
     $("#divReg").hide();
     $("#divPrijava").hide();
+    $("#prijavaDiv").hide();
     $("#divPretraga").hide();
     $("#divForma").hide();
+    $("#info2").hide();
 
 
     $("body").on("click", "#odjavise", odjava); 
     $("body").on("click", "#obrisiZaposleni", obrisiZaposleni); 
-    //---------------------
+
+
+    //---------------------------------------------------------
     $("#btnZaposleni").click(function () {
         var reqUrlZaposleni = "http://" + host + zaposleniEndPoint;
 
@@ -36,6 +40,7 @@
 
         $.getJSON(reqUrlJedinice, setJediniceLista, "json");
     });
+
 
     $("#btnPrijavise").click(function (e) {
         $("#divPrijava").show();
@@ -72,6 +77,8 @@
         $("#divReg").show();
         $("#regPrijava").hide();
     });
+
+    //---------------------------------------------------------
 
     $("#zaposleniForma").submit(function (e) {
         e.preventDefault();
@@ -156,8 +163,11 @@
         })
     });
 
+    // PRIJAVA
+
     $("#prijava").submit(function (e) {
         e.preventDefault();
+        $("#prijavaDiv").empty();
 
         var userName = $("#priEmail").val();
         var password = $("#priLoz").val();
@@ -181,7 +191,9 @@
             console.log(token);
             $("#divPrijava").hide();
             $("#info2").show();
-            $("#info2").append("Prijavljeni korisnik: " + data.userName + " <span><button style='background-color:yellow' class='btn btn -default' id='odjavise'>Odjavi se</button></span>");
+            $("#prijavaDiv").append("<p id='infoOdjava'>Prijavljeni korisnik: " + data.userName + "</p>");
+            $("#prijavaDiv").append("<button class='btn' id='odjavise'>Odjava</button>")
+            $("#prijavaDiv").show();
             $("#btnZaposleni").trigger("click");
             $("#divPretraga").show();
             $("#regPrijavaDiv").hide();
@@ -196,7 +208,7 @@
 
     });
 
-    //pretraga
+    // PRETRAGA
     //------------------------------------------------------------------------------------
     $("#pretragaForma").submit(function (e) {
 
@@ -230,11 +242,11 @@
             var table;
 
             if (token) {
-                table = $("<table border='1'><tr style='background-color:yellow;'><th>Ime i prezime</th><th>Rola</th><th>Godina zaposlenja</th><th>Godina rodjenja</th><th>Jedinica</th><th>Plata</th></tr></table>");
+                table = $("<table class='zaposleniTabela'><tr style='text-align:center'><th>Ime i prezime</th><th>Rola</th><th>Godina zaposlenja</th><th>Godina rodjenja</th><th>Jedinica</th><th>Plata</th><th></th></tr></table>");
             }
             else {
 
-                table = $("<table border='1'><tr style='background-color:yellow;'><th>Ime i prezime</th><th>Rola</th><th>Godina zaposlenja</th><th>Jedinica</th></tr></table>");
+                table = $("<table class='zaposleniTabela'><tr><th style='text-align:center'>Ime i prezime</th><th>Rola</th><th>Godina zaposlenja</th><th>Jedinica</th></tr></table>");
 
             }
 
@@ -259,6 +271,8 @@
         })
 
     });
+
+    // ODJAVA 
     function odjava() {
         token = null;
         headers = {};
@@ -271,8 +285,11 @@
         $("#divPretraga").hide();
         $("#divNajduzaTradicija").hide();
         $("#regPrijava").show();
+        $("#btnZaposleni").trigger("click");
 
     }
+
+    // BRISANJE 
 
     function obrisiZaposleni() {
         var zaposleniId = this.name;
@@ -299,6 +316,9 @@
 
     }
 
+
+    // select lista
+
     function setJediniceLista(data, status) {
         if (status === "success") {
 
@@ -319,6 +339,7 @@
 
 
 
+    // tabela zaposleni
 
     function setZaposleniInfo(data, status) {
         if (status === "success") {
